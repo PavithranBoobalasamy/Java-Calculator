@@ -2,38 +2,48 @@
 public class SimpleArithmetic {
 
     public long add(long num1, long num2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+        return num1 + num2;
     }
 
     public long subtract(long num1, long num2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'subtract'");
+        return num1 - num2;
     }
 
     public long multiply(long num1, long num2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'multiply'");
+        return num1 * num2;
     }
 
     public long integerDivide(long num1, long num2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'integerDivide'");
+        return num1/num2;
     }
 
     public long divide(long num1, long num2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'divide'");
+        return (long)((float)num1/num2);
     }
 
     public long sqRoot(long num) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sqRoot'");
+        long guess = num/2;
+        double eps = 0.00001;
+        while((guess*guess)-num > eps){
+            guess = (guess + num/guess) /2;
+        }
+        return guess;
     }
 
-    public long exponentiation(long num1, long num2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'exponentiation'");
+    public double exponentiation(long num1, long num2) {
+        if(num2<0){
+            num1 = 1/num1;
+            num2 = -num2;
+        }
+        return power(num1,num2);
+    }
+
+    private double power(long num1,long num2){
+        if(num2 == 0) return 1;
+        double half = power(num1, num2/2);
+        double result = half  * half;
+        if(num2%2 == 1) result *=num1;
+        return result;
     }
 
 }
